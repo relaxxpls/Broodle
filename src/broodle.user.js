@@ -6,6 +6,7 @@
 // @author       relaxxpls
 // @copyright    2021, relaxxpls (https://github.com/relaxxpls)
 // @license      MIT; https://raw.githubusercontent.com/relaxxpls/Broodle/main/LICENSE
+// @icon         https://raw.githubusercontent.com/relaxxpls/broodle/main/docs/icon.png
 // @homepageURL  https://github.com/relaxxpls/Broodle
 // @supportURL   https://github.com/relaxxpls/Broodle/issues
 // @match        https://*/mod/quiz/attempt.php*
