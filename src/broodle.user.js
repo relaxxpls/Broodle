@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Broodle
 // @namespace    https://github.com/relaxxpls/Broodle
-// @version      1.0.0
+// @version      1.0.1
 // @description  Brute Force Moodle Questions!
 // @author       relaxxpls
 // @copyright    2021, relaxxpls (https://github.com/relaxxpls)
@@ -19,14 +19,27 @@
 // 2. Tries values from [1e-5, 1e5] with 2 significant fig accuracy
 // 3. Customisable to use other ranges
 
+// Set Start Values
+// Eg: If you want to start at 0.1e-5
+const S_D = 0.1; // Start decimal
+const S_E = -5; // Start exponent
+
+// Set End Values
+// If you want to start at 9.9e5
+const E_V = 9.9; // End decimal
+const E_E = 5; // End exponent
+
+// Decimal range 1e-5 to 1e5
+
 ;(function () {
 	'use strict'
 	let answerInput = document.querySelector('input[type=text].formulas_numeric')
-	let checkButton = document.querySelector('input[type=submit][value=Check]')
-	// Decimal range 1e-5 to 1e5
-	var i = GM_getValue('broodle_i', -5)
-	var j = GM_getValue('broodle_j', 0.1)
+	let checkButton = document.querySelector('input[type=submit][value=Check]')	
+	var i = GM_getValue('broodle_i', S_D-0.1)
+	var j = GM_getValue('broodle_j', S_E)
 	answerInput.value = j.toPrecision(3) + 'e' + i
+	
+	
 	j += 0.1
 	if (j < 10) {
 		GM_setValue('broodle_j', j)
@@ -44,7 +57,8 @@
 		GM_setValue('broodle_j', 0.1)
 		GM_setValue('broodle_i', -5)
 		alert('Answer = ' + j.toPrecision(3) + 'e' + i)
-	} else if (i <= 5) {
+	}
+	if (!status && i <= 5) {
 		checkButton.click()
 	}
 })()
